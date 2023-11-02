@@ -1,0 +1,577 @@
+\documentclass[aspectratio=169, 11pt]{beamer}
+\usetheme[kul]{energyville}	%
+
+
+\usefonttheme[onlymath]{serif}			% math font with serifs, delete to make it sans-serif
+\setbeamertemplate{footline}[body] 		% delete this line to remove footline bar on all frames
+
+
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% Remove: just used for figure placeholder
+\usepackage{todonotes}
+
+
+% Text within [] will appear on the footline
+\title[EnergyVille Template]{EnergyVille LaTeX Template}
+\subtitle{Overview and examples}
+
+\author{Author Name}
+\institute{EnergyVille}
+\date{\today}
+
+
+\begin{document}
+
+% Title page
+\begin{frame}[plain,noframenumbering]
+	\titlepage
+\end{frame}
+	
+
+% Table of Contents
+\begin{frame}{Outline}
+	\hfill	{\large \parbox{0.95\textwidth}{\tableofcontents[hideothersubsections]}}
+\end{frame}
+
+\section{Theme options}
+\subsection{Mother institution logo}
+\begin{frame}[fragile]{Theme options}{Mother institution logo} %option fragile needed for verbatim environment
+To select the logo of the mother institution the options are:
+\begin{itemize}
+	\item \texttt{kul} \qquad for KU Leuven \includegraphics[height=10px]{graphics/kul}
+	\item \texttt{vito} \quad for VITO \includegraphics[height=10px]{graphics/vito}
+	\item \texttt{imec} \qquad for  IMEC \includegraphics[height=10px]{graphics/imec}
+	\item \texttt{uhasselt} \qquad for UHasselt \includegraphics[height=10px]{graphics/uhasselt}
+\end{itemize}
+
+Example:
+\begin{verbatim}
+    \usetheme[kul]{energyville}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Theme options}{Table of contents}
+To display the progress in the table of contents before each section the option \texttt{tocsection} can be used as:
+
+\begin{verbatim}
+    \usetheme[kul, tocsection]{energyville}
+\end{verbatim}
+\end{frame}
+
+\section{Title page}
+\begin{frame}[fragile]{Title page logos}
+By default, the title page defines \texttt{titlegraphic} as EnergyVille logo. A custom graphic can be defined with:
+
+\begin{verbatim}
+    \titlegraphic{ \includegraphics[height=45px]{mytitlelogo.png} }
+\end{verbatim}
+
+If you would like to keep both logos, the following snippet can be used.
+
+\begin{verbatim}
+    \titlegraphic{
+        \hfill
+        \includegraphics[height=45px]{graphics/energyville}
+        \hspace{40px} % you might need to adjust this space
+        \includegraphics[height=45px]{mytitlelogo.png}
+        \hfill
+    }
+\end{verbatim}
+\end{frame}
+
+
+\section{Additional commands}
+\begin{frame}[fragile]{Additional commands}
+Three additional commands are provided in the template.
+
+Text indicating the level of confidentiality (will appear on the bottom left)
+\begin{verbatim}
+    \confidentiality{Confidential}
+\end{verbatim}
+
+Logo of the project (will appear on the top right)
+\begin{verbatim}
+    \projectlogo{\includegraphics[height=15px]{graphics/project}}
+\end{verbatim}
+
+Logo of the funding body (will appear on the top right under the project logo)
+\begin{verbatim}
+    \fundinglogo{\includegraphics[height=15px]{graphics/funding}}
+\end{verbatim}
+
+\end{frame}
+
+\section{Frames and text}
+\subsection{Positioning}
+\begin{frame}[t]{Frames and text}{Positioning}
+Frame option [t] for text at the top of the frame
+\end{frame}
+
+\begin{frame}[c]{Frames and text}{Positioning}
+Frame option [c] for text at the centre of the frame
+\end{frame}
+
+\begin{frame}[b]{Frames and text}{Positioning}
+Frame option [b] for text at the bottom of the frame
+\end{frame}
+
+
+\begin{frame}[plain,fragile]{Frames and text}{Footline}   %option fragile needed for verbatim environment
+\vspace{2.1mm} %extra space needed, otherwise text starts to close to the frame title
+Frame option [plain] to remove footline on individual frame
+
+\vspace{25pt}
+To remove footline from \emph{all} frames delete this line from preamble in .tex file: 
+\begin{verbatim}
+    \setbeamertemplate{footline}[body]
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+	This frame has no title.
+\end{frame}
+
+\begin{frame}{Frames and text}{Double--column frame}
+	\begin{columns}[t]
+		\begin{column}{.5\textwidth}
+			This is the top of the first column.	
+		\end{column}
+		\begin{column}{.5\textwidth}
+			This is the top of the second column.
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+
+\begin{frame}{Frames and text}{Text alignment}
+	\begin{flushleft}
+		Left justified 	environment ...
+	\end{flushleft}
+	\begin{center}
+		Center environment ...
+	\end{center}
+	\begin{flushright}
+		Right justified environment ...
+	\end{flushright} 
+
+\vspace{6pt}
+\raggedright Ragged right command ...
+
+\centering	Centering command ...
+
+\raggedleft Ragged left command ...
+
+\vspace{6pt}
+\flushleft Flush left command ...
+
+\flushright Flush right command ...
+\end{frame}
+
+
+\begin{frame}{Frames and text}{Font styles}
+Sans-serif family of Modern Latin font
+\begin{itemize}
+	\item Normal text
+	\item \textbf{Bold}
+	\item \textit{Italic}, \emph{Emphasis}, \textsl{Slanted}
+	\item \underline{Underline}
+	\item \textsc{Small caps}
+	\item \texttt{Typewriter}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Frames and text}{Font sizes}
+\begin{itemize}
+	\item \tiny tiny
+	\item \scriptsize scriptsize
+	\item \footnotesize footnotesize
+	\item \small small
+	\item \normalsize normalsize
+	\item \large large
+	\item \Large Large
+	\item \LARGE LARGE
+	\item \huge huge
+	\item \Huge Huge 
+\end{itemize}
+\end{frame} 
+
+
+\section{Environments}
+\begin{frame}[fragile]{Environments}{Equations and math}   %option fragile needed for verbatim environment
+Equations and other mathematical symbols use serif typeface:
+\begin{gather*}
+f(x)= a x^2 + b x + c
+\end{gather*}
+
+Style of individual symbols can be changed manually:
+\begin{gather*}
+\mathbf{\hat{\beta}} = \underset{b}{\rm arg\,min}\,(\mathbf{y}- \mathbf{X} \mathbf{b})^{\mathsf{T}}\,\boldsymbol{\Omega}^{-1}(\mathbf{y}- \mathbf{X} \mathbf{b}) \\
+\mathsf{    G_t = \alpha e^{-\beta e^{-\gamma \cdot t}}    }
+\end{gather*}
+
+To change all math into sans-serif delete this line from the preamble in .tex file:
+	\begin{verbatim}
+	\usefonttheme[onlymath]{serif}
+	\end{verbatim}
+\end{frame}
+
+\begin{frame}{Environments}{Graphics}
+\vspace{-12pt}
+	\begin{figure}
+	\centering
+	\missingfigure[figwidth=0.4\textwidth]{Insert figure}
+	\caption{Example graphic \label{fig:figure1}}
+	\footnotesize
+	\flushleft
+	Do not delete logo files in the graphics folder. They are used on the title page and in the footline.
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Environments}{Tables}
+\begin{table}
+	\centering
+	\scriptsize
+	\caption{Example table}
+	\begin{tabular}{lccc} \hline
+	 & (1) & (2) & (3) \\ \hline
+	$x_1$ & 0.705*** & 0.215** & 0.123 \\
+	 & (0.107) & (0.0964) & (0.105) \\
+	$x_2$ & 0.476*** &  & 0.114** \\
+	 & (0.0489) &  & (0.0519) \\
+	$x_3$ &  & 0.592*** & 0.538*** \\
+	 &  & (0.0361) & (0.0436) \\
+	Constant & 0.0478 & 0.0576 & 0.0511 \\
+	 & (0.0487) & (0.0427) & (0.0426) \\
+	 &  &  &  \\
+	Observations & 500 & 500 & 500 \\
+	 R-squared & 0.711 & 0.776 & 0.779 \\ \hline
+	\end{tabular}
+	
+	\flushleft\scriptsize
+	Standard errors in parentheses, *** p$<$0.01, ** p$<$0.05, * p$<$0.1
+\end{table}
+\end{frame}
+
+
+\section{Itemization and enumeration} \label{sec:items}
+\begin{frame}{Itemization and enumeration}{Itemize (default)}
+\begin{itemize}
+	\item Itemize style
+	\item Itemize style
+	\begin{itemize}
+		\item Itemize subitem
+		\item Itemize subitem
+			\begin{itemize}
+				\item Itemize subsubitem
+				\item Itemize subsubitem
+			\end{itemize}
+		\item Itemize subitem	
+	\end{itemize}
+	\item Itemize style
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Itemize (extra space between items)}
+\begin{itemize}
+	\itemsep 20pt
+	\item Itemize style
+	\item Itemize style
+	\begin{itemize}
+		\itemsep 10pt
+		\item Itemize subitem
+		\item Itemize subitem
+		\item Itemize subitem	
+	\end{itemize}
+	\item Itemize style
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Enumerate (default)}
+\begin{enumerate}
+	\item Enumerate style
+	\item Enumerate style
+	\begin{enumerate}
+		\item Enumerate subitem
+		\item Enumerate subitem
+		\begin{enumerate}
+			\item Enumerate subsubitem
+			\item Enumerate subsubitem
+		\end{enumerate}
+		\item Enumerate subitem
+	\end{enumerate}
+	\item Enumerate style
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Enumerate (option I + pause)}
+\begin{enumerate}[I]
+	\item Enumerate style
+	\item Enumerate style
+	\begin{enumerate}[I]
+		\item Enumerate subitem
+		\item Enumerate subitem
+		\pause
+		\begin{enumerate}[I]
+			\item Enumerate subsubitem
+			\item Enumerate subsubitem
+		\end{enumerate}
+		\pause
+		\item Enumerate subitem
+	\end{enumerate}
+	\item Enumerate style
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Enumerate (option i.)}
+\begin{enumerate}[i.]
+	\item Enumerate style
+	\item Enumerate style
+	\begin{enumerate}[i.]
+		\item Enumerate subitem
+		\item Enumerate subitem
+		\begin{enumerate}[i.]
+			\item Enumerate subsubitem
+			\item Enumerate subsubitem
+		\end{enumerate}
+		\item Enumerate subitem
+	\end{enumerate}
+	\item Enumerate style
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Enumerate (option A. + effects)}
+\begin{enumerate}[A.]
+	\item<1-5> Enumerate style
+	\item<1-5> Enumerate style
+	\begin{enumerate}[A.]
+		\item<2-5> Enumerate subitem
+		\item<3-5> Enumerate subitem
+		\begin{enumerate}[A.]
+			\item<3-4> Enumerate subsubitem
+			\item<3-4> Enumerate subsubitem
+		\end{enumerate}
+		\item<4-5> Enumerate subitem
+	\end{enumerate}
+	\item<5> Enumerate style
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Itemization and enumeration}{Enumerate (option a + extra space)}
+\begin{enumerate}[a\enspace]
+	\item Enumerate style
+	\item Enumerate style
+	\begin{enumerate}[a\enspace]
+		\item Enumerate subitem
+		\item Enumerate subitem
+		\begin{enumerate}[a\enspace]
+			\item Enumerate subsubitem
+			\item Enumerate subsubitem
+		\end{enumerate}
+		\item Enumerate subitem
+	\end{enumerate}
+	\item Enumerate style
+\end{enumerate}
+\end{frame}
+
+
+\section{Blocks and other environments}	\label{sec:blocks}
+\begin{frame}{Blocks and other environments}{Generic, example, and alert blocks}
+	\begin{block}{Generic block title}
+	Text for generic block
+	\end{block}
+
+	\begin{exampleblock}{Example block title}
+	Text for example block
+	\end{exampleblock}
+
+	\begin{alertblock}{Alert block title}
+	Text for alert block
+	\end{alertblock}
+\end{frame}
+
+
+\begin{frame}{Blocks and other environments}{Theorems, definitions, and examples}
+Theorem environment
+	\begin{theorem}
+		$a^2 + b^2 = c^2$
+	\end{theorem}
+
+Definition environment
+	\begin{definition}
+		Here is definition text
+	\end{definition}
+
+Example environment
+	\begin{example}
+		Example text
+	\end{example}
+\end{frame}
+
+
+\begin{frame}{Blocks and other environments}{Proofs and corollaries}
+Proof environment
+	\begin{proof}
+	Proof text.
+	\end{proof}
+	
+	\begin{proof}[Proof with custom title\nopunct]
+	Proof with any name and optionally without full stop in the title
+	\end{proof}
+
+\vspace{11pt}	
+Corollary environment
+	\begin{corollary}
+	$ x + y = y + x  $
+	\end{corollary}
+\end{frame}
+
+
+\begin{frame}{Blocks and other environments}{Boxes}
+'Beamer color box' preset corresponding to research lines
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{buildings}
+            Buildings and Districts
+		\end{beamercolorbox}
+	\end{center}
+	
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{markets}
+            Energy strategies and markets
+		\end{beamercolorbox}
+	\end{center}
+
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{networks}
+            Networks
+		\end{beamercolorbox}
+	\end{center}
+
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{storage}
+            Storage
+		\end{beamercolorbox}
+	\end{center}
+
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{conversion}
+            Power control \& conversion
+		\end{beamercolorbox}
+	\end{center}
+
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{solar}
+            Solar
+		\end{beamercolorbox}
+	\end{center}
+
+	\begin{center}~
+		\begin{beamercolorbox}[wd=.7\textwidth,sep=4pt,center]{general}
+            General
+		\end{beamercolorbox}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Blocks and other environments}{Quotes}
+Quote 
+\begin{quote}
+	Quote environment is for a short quotation, or a series of small quotes, separated by blank lines.
+\end{quote}
+
+\vspace{11pt}
+Quotation 
+\begin{quotation}
+	Quotation environment is for use with longer quotations, of more than one paragraph, because it indents the first line of each paragraph. 
+
+	Quotation environment is for use with longer quotations, of more than one paragraph, because it indents the first line of each paragraph.
+	
+	\raggedleft	\normalfont --  WikiBooks \LaTeX$ $ guide
+\end{quotation}
+\end{frame}
+
+
+\begin{frame}[fragile]{Blocks and other environments}{Quotes}
+Verse
+\begin{verse}
+	Verse environment \\ 
+	is for quotations where \\
+	line breaks are important. 
+\end{verse}
+
+\vspace{11pt}
+Verbatim
+\begin{verbatim}
+Verbatim text is ideal for typesetting program
+source code. To use it in Beamer the frame needs
+option [fragile].
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}{Blocks and other environments}{Abstract}
+\vspace{15pt}
+\begin{abstract}
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis pharetra sapien, non tempor tortor. Vestibulum gravida mauris ac lorem semper, vel vulputate mauris tincidunt. Sed diam ante, dignissim consequat pulvinar in, placerat eu nibh. Donec congue id elit sit amet iaculis.
+	
+	Proin pellentesque vel ex in fermentum. Pellentesque suscipit odio ut accumsan feugiat. Aliquam erat volutpat. Sed feugiat cursus eros, sit amet vestibulum ipsum pulvinar at. Sed eget porttitor purus. Duis nec nunc ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+\end{abstract}
+\end{frame}
+
+
+\begin{frame}[label=buttons]{Blocks and other environments}{Buttons}
+Standard buttons
+
+	\hyperlink{fig:figure1}{\beamerbutton{Link to Figure 1}}
+
+	\hyperlink{extraframe}{\beamergotobutton{Extra frame}}
+
+	\beamerskipbutton{Button with long title and no link}
+
+	\beamerreturnbutton{}
+
+\vspace{11pt}
+These buttons can link to any frame, figure, table, theorem, section, or anything else with defined label
+\end{frame}
+
+
+\begin{frame}[c,plain,noframenumbering]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[fill=ev-green]
+    (current page.south east)  rectangle  ([shift={(0,-0.1\paperheight)}]current page.north west)   ;
+\end{tikzpicture}
+
+\centering
+\textcolor{white}{Ending frame (version 1)}
+\end{frame}
+
+
+\begin{frame}[c,plain,noframenumbering]
+\begin{tikzpicture}[remember picture,overlay]
+\fill[fill=ev-secgreen]
+    (current page.south east)  rectangle  (current page.north west)   ;
+\end{tikzpicture}
+
+\centering
+\textcolor{white}{Ending frame (version 2)}
+\end{frame}
+
+\appendix
+\begin{frame}[noframenumbering,label=extraframe]{Extra slide}
+Because of frame option [noframenumbering] this frame is not counted in the total number of frames.
+
+\vspace{24pt}
+This button with cross-referencing link that will take you back to the frame: 
+
+\hyperlink{buttons}{\beamerreturnbutton{Back to Buttons}}
+\end{frame}
+
+
+\end{document}

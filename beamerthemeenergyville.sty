@@ -1,0 +1,185 @@
+\mode<presentation>
+
+% Template options
+% =============================================================================
+% Option: Logo of mother institution
+\DeclareOptionBeamer{kul}{\def\logoinstitute{graphics/kul}}
+\DeclareOptionBeamer{imec}{\def\logoinstitute{graphics/imec}}
+\DeclareOptionBeamer{vito}{\def\logoinstitute{graphics/vito}}
+\DeclareOptionBeamer{uhasselt}{\def\logoinstitute{graphics/uhasselt}}
+% Option: Table of contents before each section
+\def\tocsection{n}  % normal title
+\DeclareOptionBeamer{tocsection}{\def\tocsection{y}}  % title pages with sedes
+\ProcessOptionsBeamer
+
+% Define custom commands
+% =============================================================================
+% logo of the project
+\def\insertprojectlogo{}
+\newcommand{\projectlogo}[1]{\def\insertprojectlogo{#1}}
+% logo of the funding body
+\def\insertfundinglogo{}
+\newcommand{\fundinglogo}[1]{\def\insertfundinglogo{#1}}
+% level of confidentiality
+\def\insertconfidentiality{}
+\newcommand{\confidentiality}[1]{\def\insertconfidentiality{#1}}
+
+\titlegraphic{\includegraphics[height=45px]{graphics/energyville}}
+
+% Load fonts
+\usepackage{fontspec}
+\setsansfont{TitilliumWeb-Regular}[
+    Path = font/,
+    BoldFont = TitilliumWeb-Bold,
+    ItalicFont = TitilliumWeb-Italic,
+    BoldItalicFont = TitilliumWeb-BoldItalic
+    ]
+% Packages
+\usepackage{tikz}
+\usetikzlibrary{shapes,shadows,arrows,backgrounds,mindmap,decorations.pathreplacing,positioning}
+
+% Define colour scheme
+% =============================================================================
+\definecolor{ev-green}{RGB}{104,165,44}
+\definecolor{ev-secgreen}{RGB}{22,113,67}
+\definecolor{ev-grey}{RGB}{80,81,80}
+% Colours of research lines
+\definecolor{ev-buildings}{RGB}{33,166,157}
+\definecolor{ev-markets}{RGB}{248,196,91}
+\definecolor{ev-networks}{RGB}{40,106,166}
+\definecolor{ev-storage}{RGB}{210,219,47}
+\definecolor{ev-conversion}{RGB}{104,165,44}
+\definecolor{ev-solar}{RGB}{38,80,94}
+\definecolor{ev-general}{RGB}{241,174,141}
+
+% Assign text colours
+% =============================================================================
+\urlstyle{sf}
+
+\setbeamercolor{title}{fg=white}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+\setbeamercolor{institute}{fg=white}
+        
+\setbeamercolor{frametitle}{fg=ev-green}
+\setbeamercolor{framesubtitle}{fg=ev-grey}
+
+\setbeamercolor{normal text}{fg=ev-grey}
+
+\setbeamercolor{section in toc}{fg=ev-green}
+\setbeamercolor{section in toc shaded}{fg=ev-green}
+
+\setbeamercolor{item}{fg=ev-green}
+\setbeamercolor{subitem}{fg=ev-green}
+\setbeamercolor{subsubitem}{fg=ev-green}
+
+\setbeamercolor{text}{fg=white,bg=ev-green}
+\setbeamercolor{caption name}{fg=ev-grey}
+\setbeamercolor{abstract title}{fg=ev-green}
+
+% Assign boxes colours
+% =============================================================================
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamercolor{block title}{bg=ev-green,fg=white}
+\setbeamercolor{block body}{bg=white!90!ev-green,fg=ev-grey}
+\setbeamertemplate{qed symbol}{\color{ev-green} $\square$}
+
+\setbeamercolor{block title example}{bg=ev-secgreen,fg=white}
+\setbeamercolor{block body example}{bg=white!90!ev-secgreen,fg=ev-grey}
+
+\setbeamercolor{block title alerted}{bg=ev-general, fg=white}
+\setbeamercolor{block body alerted}{bg=white!90!ev-general}
+
+\setbeamercolor{buildings}{fg=white,bg=ev-buildings}		
+\setbeamercolor{markets}{fg=white,bg=ev-markets}		
+\setbeamercolor{networks}{fg=white,bg=ev-networks}
+\setbeamercolor{storage}{fg=white,bg=ev-storage}	
+\setbeamercolor{conversion}{fg=white,bg=ev-conversion}	
+\setbeamercolor{solar}{fg=white,bg=ev-solar}	
+\setbeamercolor{general}{fg=white,bg=ev-general}	
+\setbeamercolor{button}{bg= ev-green,fg=white}
+\setbeamercolor{footline}{fg=white}
+
+% Define title slide
+% =============================================================================
+\setbeamertemplate{title page}
+{
+\begin{tikzpicture}[remember picture,overlay]
+    % \node [inner sep=5px, anchor=south west](funding) at (current page.south west) {\includegraphics[height=15px]{\insertlogo}};
+    \node (partners) [node distance=5px, inner sep=0, anchor=south, above=of current page.south] {\includegraphics[height=15px]{graphics/partners_logos}};
+    \node (background) [node distance=5px, inner sep=0, above=of partners, anchor=south] {\includegraphics[width=\paperwidth]{graphics/background}};
+    \node (ev) [node distance=0.08\paperheight, inner sep=0, below=of current page.north, anchor=north] {\inserttitlegraphic};
+    \node (title) [white, node distance=-10px, text centered, text width=0.70\paperwidth, above=of background, anchor=north] {\huge\inserttitle};
+    \node (subtitle) [white, node distance=0.5\lineskip, text centered, text width=0.70\paperwidth, below=of title, anchor=north] {\Large\insertsubtitle};
+    \node (date) [white, node distance=-10px, text centered, text width=0.70\paperwidth, below=of background, anchor=south] {\normalsize\insertdate};
+    \node (author) [white, node distance=0.5\lineskip, text centered, text width=0.70\paperwidth, above=of date, anchor=south] {\large\insertauthor~--~\insertinstitute};
+\end{tikzpicture}
+}
+
+% Define inner Theme
+% =============================================================================
+\setbeamertemplate{sections/subsections in toc}[circle]
+\setbeamersize{text margin left=21pt,text margin right=21pt}
+
+%itemize list
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[circle]
+\setbeamertemplate{itemize subsubitem}[circle]
+
+%enumerate list
+\setbeamertemplate{enumerate item}{\small  \insertenumlabel  \enspace }		%enumerate symbol
+\setbeamertemplate{enumerate subitem}{\scriptsize \raisebox{.085em} \insertsubenumlabel } 	%subenumerate symbol
+\setbeamertemplate{enumerate subsubitem}{\tiny \raisebox{.18em} \insertsubsubenumlabel } 	%subenumerate symbol
+
+
+% Define slide header
+% =============================================================================
+\setbeamertemplate{frametitle}
+{
+    \vspace{10px}
+    {\Large\insertframetitle}\par
+    {\large\color{ev-secgreen}\insertframesubtitle}
+    \begin{tikzpicture}[remember picture, overlay, node distance=0px]
+        \node [anchor=north east] (project) at (current page.north east) {\insertprojectlogo};
+        \node [anchor=north east, below=of project] {\insertfundinglogo};
+    \end{tikzpicture}
+}
+
+% Define slide footer
+% =============================================================================
+\setbeamertemplate{navigation symbols}{}
+\defbeamertemplate{footline}{body}
+{
+\hbox{
+	\begin{beamercolorbox}[wd=\paperwidth,ht=25px,dp=0.1cm,left]{footline}{}
+	\end{beamercolorbox}} 
+\begin{tikzpicture}[remember picture, overlay, node distance=0px]
+    \node [inner sep=0, anchor=south](footer) at (current page.south) {\includegraphics[width=\paperwidth, height=10px]{graphics/footer}};
+    \node [white, left=of footer, anchor=west] {\insertdate};
+    \node [white, right=of footer, anchor=east] {\insertframenumber};
+    \node [white, below=of footer, anchor=south] {\insertshorttitle};
+    \node [above left=of footer, anchor=south west](ev) {\includegraphics[height=15px]{graphics/energyville}};
+    \node [above right=of footer, anchor=south east](institute) {\includegraphics[height=15px]{\logoinstitute}};
+    \node [ev-grey, right=of ev, anchor=west]{\tiny\insertconfidentiality};
+\end{tikzpicture}
+}	
+
+% show table of contents before each section
+\if y\tocsection 
+	\AtBeginSection[] {
+		\begin{frame}
+	    	\frametitle{Outline} 
+		    	{
+		    	\hypersetup{hidelinks} %disable link colors
+				\hfill	{\large\parbox{.95\textwidth}{\tableofcontents[currentsection,hideothersubsections]}}
+				}
+		\end{frame}
+	}
+\else
+\fi
+
+% Remove presentation controls
+
+\mode
+<all> 
