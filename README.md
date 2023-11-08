@@ -12,7 +12,7 @@ To select the logo of the mother institution the options are:
 
 - `kul` for KU Leuven
 - `vito` for VITO
-- `imec` \for IMEC
+- `imec` for IMEC
 - `uhasselt` for UHasselt
 
 Example:
@@ -60,7 +60,6 @@ Text indicating the level of confidentiality (will appear on the bottom left)
 ```
 
 Logo of the project (will appear on the top right)
-\begin{verbatim}
 
 ```LaTeX
 \projectlogo{\includegraphics[height=15px]{graphics/project}}
